@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="39cm" height="5cm" viewBox="219 238 767 92" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="230.185" y="240" width="115.9" height="89"/>
+    <path style="fill: #ffffff" d="M 230.185,240 A 10,10 0 0 0 220.185,250 L 230.185,250 z"/>
+    <path style="fill: #ffffff" d="M 356.085,250 A 10,10 0 0 0 346.085,240 L 346.085,250 z"/>
+    <rect style="fill: #ffffff" x="220.185" y="250" width="135.9" height="69"/>
+    <path style="fill: #ffffff" d="M 220.185,319 A 10,10 0 0 0 230.185,329 L 230.185,319 z"/>
+    <path style="fill: #ffffff" d="M 346.085,329 A 10,10 0 0 0 356.085,319 L 346.085,319 z"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="230.185" y1="240" x2="346.085" y2="240"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="230.185" y1="329" x2="346.085" y2="329"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 230.185,240 A 10,10 0 0 0 220.185,250"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 356.085,250 A 10,10 0 0 0 346.085,240"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="220.185" y1="250" x2="220.185" y2="319"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="356.085" y1="250" x2="356.085" y2="319"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 220.185,319 A 10,10 0 0 0 230.185,329"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 346.085,329 A 10,10 0 0 0 356.085,319"/>
+    <text font-size="20.32" style="fill: #016aba;text-anchor:middle;font-family:Ubuntu;font-style:normal;font-weight:normal" x="288.135" y="290.7">
+      <tspan x="288.135" y="290.7">QT tablet</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="356.085" y1="284.5" x2="424.266" y2="284.5"/>
+    <polygon style="fill: #016aba" points="431.766,284.5 421.766,289.5 424.266,284.5 421.766,279.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" points="431.766,284.5 421.766,289.5 424.266,284.5 421.766,279.5 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="445.005" y="240" width="111.8" height="89"/>
+    <path style="fill: #ffffff" d="M 445.005,240 A 10,10 0 0 0 435.005,250 L 445.005,250 z"/>
+    <path style="fill: #ffffff" d="M 566.805,250 A 10,10 0 0 0 556.805,240 L 556.805,250 z"/>
+    <rect style="fill: #ffffff" x="435.005" y="250" width="131.8" height="69"/>
+    <path style="fill: #ffffff" d="M 435.005,319 A 10,10 0 0 0 445.005,329 L 445.005,319 z"/>
+    <path style="fill: #ffffff" d="M 556.805,329 A 10,10 0 0 0 566.805,319 L 556.805,319 z"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="445.005" y1="240" x2="556.805" y2="240"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="445.005" y1="329" x2="556.805" y2="329"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 445.005,240 A 10,10 0 0 0 435.005,250"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 566.805,250 A 10,10 0 0 0 556.805,240"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="435.005" y1="250" x2="435.005" y2="319"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="566.805" y1="250" x2="566.805" y2="319"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 435.005,319 A 10,10 0 0 0 445.005,329"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 556.805,329 A 10,10 0 0 0 566.805,319"/>
+    <text font-size="20.32" style="fill: #016aba;text-anchor:middle;font-family:Ubuntu;font-style:normal;font-weight:normal" x="500.905" y="278">
+      <tspan x="500.905" y="278">QT Zyre</tspan>
+      <tspan x="500.905" y="303.4">interface</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="651.625" y="240" width="110" height="89"/>
+    <path style="fill: #ffffff" d="M 651.625,240 A 10,10 0 0 0 641.625,250 L 651.625,250 z"/>
+    <path style="fill: #ffffff" d="M 771.625,250 A 10,10 0 0 0 761.625,240 L 761.625,250 z"/>
+    <rect style="fill: #ffffff" x="641.625" y="250" width="130" height="69"/>
+    <path style="fill: #ffffff" d="M 641.625,319 A 10,10 0 0 0 651.625,329 L 651.625,319 z"/>
+    <path style="fill: #ffffff" d="M 761.625,329 A 10,10 0 0 0 771.625,319 L 761.625,319 z"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="651.625" y1="240" x2="761.625" y2="240"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="651.625" y1="329" x2="761.625" y2="329"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 651.625,240 A 10,10 0 0 0 641.625,250"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 771.625,250 A 10,10 0 0 0 761.625,240"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="641.625" y1="250" x2="641.625" y2="319"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="771.625" y1="250" x2="771.625" y2="319"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 641.625,319 A 10,10 0 0 0 651.625,329"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 761.625,329 A 10,10 0 0 0 771.625,319"/>
+    <text font-size="20.32" style="fill: #016aba;text-anchor:middle;font-family:Ubuntu;font-style:normal;font-weight:normal" x="706.625" y="278">
+      <tspan x="706.625" y="278">Robot Zyre</tspan>
+      <tspan x="706.625" y="303.4">interface</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="771.625" y1="284.5" x2="837.614" y2="284.5"/>
+    <polygon style="fill: #016aba" points="845.114,284.5 835.114,289.5 837.614,284.5 835.114,279.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" points="845.114,284.5 835.114,289.5 837.614,284.5 835.114,279.5 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="858.349" y="240" width="116.5" height="89"/>
+    <path style="fill: #ffffff" d="M 858.349,240 A 10,10 0 0 0 848.349,250 L 858.349,250 z"/>
+    <path style="fill: #ffffff" d="M 984.849,250 A 10,10 0 0 0 974.849,240 L 974.849,250 z"/>
+    <rect style="fill: #ffffff" x="848.349" y="250" width="136.5" height="69"/>
+    <path style="fill: #ffffff" d="M 848.349,319 A 10,10 0 0 0 858.349,329 L 858.349,319 z"/>
+    <path style="fill: #ffffff" d="M 974.849,329 A 10,10 0 0 0 984.849,319 L 974.849,319 z"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="858.349" y1="240" x2="974.849" y2="240"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="858.349" y1="329" x2="974.849" y2="329"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 858.349,240 A 10,10 0 0 0 848.349,250"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 984.849,250 A 10,10 0 0 0 974.849,240"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="848.349" y1="250" x2="848.349" y2="319"/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="984.849" y1="250" x2="984.849" y2="319"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 848.349,319 A 10,10 0 0 0 858.349,329"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" d="M 974.849,329 A 10,10 0 0 0 984.849,319"/>
+    <text font-size="20.32" style="fill: #016aba;text-anchor:middle;font-family:Ubuntu;font-style:normal;font-weight:normal" x="916.599" y="278">
+      <tspan x="916.599" y="278">Robot</tspan>
+      <tspan x="916.599" y="303.4">components</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" x1="567.804" y1="284.5" x2="631.889" y2="284.5"/>
+    <polygon style="fill: #016aba" points="639.389,284.5 629.389,289.5 631.889,284.5 629.389,279.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #016aba" points="639.389,284.5 629.389,289.5 631.889,284.5 629.389,279.5 "/>
+  </g>
+  <text font-size="12.7998" style="fill: #016aba;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="377.819" y="280.36">
+    <tspan x="377.819" y="280.36">ROS</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #016aba;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="792.715" y="280.545">
+    <tspan x="792.715" y="280.545">ROS</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #016aba;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="588.353" y="279.455">
+    <tspan x="588.353" y="279.455">Zyre</tspan>
+  </text>
+  <text font-size="10.16" style="fill: #016aba;text-anchor:middle;font-family:Ubuntu;font-style:normal;font-weight:normal" x="393.272" y="299.269">
+    <tspan x="393.272" y="299.269">(QT master)</tspan>
+  </text>
+  <text font-size="10.16" style="fill: #016aba;text-anchor:middle;font-family:Ubuntu;font-style:normal;font-weight:normal" x="810.72" y="299.455">
+    <tspan x="810.72" y="299.455">(robot master)</tspan>
+  </text>
+</svg>
