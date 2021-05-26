@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+import time
+from pyre_base.base_class import PyreBase
+
+import rospy
+from std_msgs.msg import String
+
+msg_data = {
+    "header":
+    {
+        "type": "RESPONSE",
+        "version": "0.1.0",
+        "metamodel": "migrave-msg-schema.json",
+        "timestamp": ""
+    },
+    "payload":
+    {
+        "metamodel": "migrave-response-schema.json",
+        "senderId": "",
+        "receiverId": ""
+    }
+}
+
+class ZyreCommunicator(PyreBase):
+    def __init__(self, node_name, groups, robot_id, zyre_network_interface):
+        '''
+        Keyword arguments:
+        node_name -- name of the zyre node
+        groups -- groups that the node should join
+        '''
+        super(ZyreCommunicator, self).__init__(node_name=node_name,
+                                               groups=groups,
+                                               message_types=[],
+                                               interface=zyre_network_interface)
+
+        self.robot_id = robot_id
+
+        say_topic = rospy.get_param('~say_topic', '/say')
+        self.say_pub = rospy.Publisher(say_topic, String, queue_size=1)
+
+    def receive_msg_cb(self, msg_content):
+        '''Processes incoming messages. Only listens to messages of type "CMD";
+        ignores all other message types
+
+        Keyword arguments:
+        msg_content -- a zyre message in string format
+
+        '''
+        dict_msg = self.convert_zyre_msg_to_dict(msg_content)
+        if dict_msg is None:
+            return
+
+        message_type = dict_msg['header']['type']
+        if message_type == 'CMD':
+            if dict_msg['payload']['receiverId'] == self.robot_id:
+                if dict_msg['payload']['type'] == 'SAY':
+                    print('Received SAY request with message {0}'.format(dict_msg['payload']['message']))
+                    self.say_pub.publish(String(data=dict_msg['payload']['message']))
+                    msg_data['header']['timestamp'] = time.time()
+                    self.shout(msg_data)
+
+if __name__ == '__main__':
+    rospy.init_node('robot_qt_tablet_interface')
+
+    qt_id = rospy.get_param('~qt_id', 'qt')
+    robot_id = rospy.get_param('~robot_id', '')
+    zyre_network_interface = rospy.get_param('~zyre_network_interface', 'wlan0')
+
+    zyre_communicator = ZyreCommunicator(robot_id, ['MIGRAVE'],
+                                         robot_id, zyre_network_interface)
+    zyre_communicator.start()
+    msg_data['payload']['senderId'] = robot_id
+    msg_data['payload']['receiverId'] = qt_id
+    rospy.loginfo('Ready for QT interaction')
+    try:
+        while not rospy.is_shutdown():
+            rospy.sleep(0.5)
+    except (KeyboardInterrupt, SystemExit):
+        print('Stopping robot QT tablet interface')
+        zyre_communicator.shutdown()

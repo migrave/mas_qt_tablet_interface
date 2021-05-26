@@ -1,0 +1,2 @@
+git+https://github.com/ropod-project/pyre.git
+git+https://github.com/ropod-project/zyre_base.git

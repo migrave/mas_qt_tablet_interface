@@ -1,0 +1,165 @@
+#!/usr/bin/env python3
+import time
+from pyre_base.base_class import PyreBase
+
+import rospy
+from qt_robot_interface.srv import speech_say, speech_sayResponse
+from qt_robot_interface.srv import speech_config, speech_configResponse
+from qt_robot_interface.srv import speech_stop, speech_stopResponse
+from qt_robot_interface.srv import gesture_play, gesture_playResponse
+from qt_robot_interface.srv import emotion_show, emotion_showResponse
+from qt_robot_interface.srv import emotion_stop, emotion_stopResponse
+from qt_robot_interface.srv import behavior_talk_audio, behavior_talk_audioResponse
+from qt_robot_interface.srv import behavior_talk_text, behavior_talk_textResponse
+from qt_robot_interface.srv import audio_play, audio_playResponse
+from qt_robot_interface.srv import audio_stop, audio_stopResponse
+from qt_robot_interface.srv import setting_download, setting_downloadResponse
+from qt_robot_interface.srv import setting_info, setting_infoResponse
+from qt_robot_interface.srv import setting_setVolume, setting_setVolumeResponse
+from qt_robot_interface.srv import setting_upload, setting_uploadResponse
+
+msg_data = {
+    "header":
+    {
+        "type": "CMD",
+        "version": "0.1.0",
+        "metamodel": "migrave-msg-schema.json",
+        "timestamp": ""
+    },
+    "payload":
+    {
+        "metamodel": "migrave-cmd-schema.json",
+        "senderId": "",
+        "receiverId": "",
+        "type": ""
+    }
+}
+
+class ZyreCommunicator(PyreBase):
+    def __init__(self, node_name, groups, robot_id, zyre_network_interface):
+        '''
+        Keyword arguments:
+        node_name -- name of the zyre node
+        groups -- groups that the node should join
+        '''
+        super(ZyreCommunicator, self).__init__(node_name=node_name,
+                                               groups=groups,
+                                               message_types=[],
+                                               interface=zyre_network_interface)
+
+        self.robot_id = robot_id
+
+        self.speech_config_srv = rospy.Service('/qt_robot/speech/config', speech_config, self.handle_speech_config)
+        self.speech_srv = rospy.Service('/qt_robot/speech/say', speech_say, self.handle_speech_say)
+        self.speech_stop_srv = rospy.Service('/qt_robot/speech/stop', speech_stop, self.handle_speech_stop)
+
+        self.gesture_play_srv = rospy.Service('/qt_robot/gesture/play', gesture_play, self.handle_gesture_play)
+        self.emotion_show_srv = rospy.Service('/qt_robot/emotion/show', emotion_show, self.handle_emotion_show)
+        self.emotion_stop_srv = rospy.Service('/qt_robot/emotion/stop', emotion_stop, self.handle_emotion_stop)
+        self.behavior_talk_audio_srv = rospy.Service('/qt_robot/behavior/talkAudio', behavior_talk_audio, self.handle_behavior_talk_audio)
+        self.behavior_talk_text_srv = rospy.Service('/qt_robot/behavior/talkText', behavior_talk_text, self.handle_behavior_talk_text)
+        self.audio_play_srv = rospy.Service('/qt_robot/audio/play', audio_play, self.handle_audio_play)
+        self.audio_stop_srv = rospy.Service('/qt_robot/audio/stop', audio_stop, self.handle_audio_stop)
+
+        self.setting_download_srv = rospy.Service('/qt_robot/setting/downloadBase64', setting_download, self.handle_setting_download)
+        self.setting_info_srv = rospy.Service('/qt_robot/setting/info', setting_info, self.handle_setting_info)
+        self.setting_set_volume_srv = rospy.Service('/qt_robot/setting/setVolume', setting_setVolume, self.handle_setting_set_volume)
+        self.setting_upload_srv = rospy.Service('/qt_robot/setting/uploadBase64', setting_upload, self.handle_setting_upload)
+
+    def receive_msg_cb(self, msg_content):
+        '''Processes incoming messages. Only listens to messages of type "CMD";
+        ignores all other message types
+
+        Keyword arguments:
+        msg_content -- a zyre message in string format
+
+        '''
+        dict_msg = self.convert_zyre_msg_to_dict(msg_content)
+        if dict_msg is None:
+            return
+
+        timestamp = dict_msg['header']['timestamp']
+        message_type = dict_msg['header']['type']
+        if message_type == 'RESPONSE':
+            if dict_msg['payload']['receiverId'] == self.robot_id:
+                print('Message received: {0}'.format(dict_msg))
+
+    def handle_speech_say(self, req):
+        print('Message received: {0}'.format(req.message))
+        return speech_sayResponse(status=True)
+
+    def handle_speech_config(self, req):
+        print('Config called: {0}'.format(req))
+        return speech_configResponse(status=True)
+
+    def handle_speech_stop(self, req):
+        print('Stop called')
+        return speech_stopResponse(status=True)
+
+    def handle_gesture_play(self, req):
+        print('Gesture play called: {0}'.format(req))
+        return gesture_playResponse(status=True)
+
+    def handle_emotion_show(self, req):
+        print('Emotion show called: {0}'.format(req))
+        return emotion_showResponse(status=True)
+
+    def handle_emotion_stop(self, req):
+        print('Emotion stop called: {0}'.format(req))
+        return emotion_stopResponse(status=True)
+
+    def handle_behavior_talk_audio(self, req):
+        print('Behavior talk audio called: {0}'.format(req))
+        return behavior_talk_audioResponse(status=True)
+
+    def handle_behavior_talk_text(self, req):
+        print('Behavior talk text called: {0}'.format(req))
+        msg_data['header']['timestamp'] = time.time()
+        msg_data['payload']['type'] = 'SAY'
+        msg_data['payload']['message'] = req.message
+        self.shout(msg_data)
+        return behavior_talk_textResponse(status=True)
+
+    def handle_audio_play(self, req):
+        print('Audio play called: {0}'.format(req))
+        return audio_playResponse(status=True)
+
+    def handle_audio_stop(self, req):
+        print('Audio stop called: {0}'.format(req))
+        return audio_stopResponse(status=True)
+
+    def handle_setting_download(self, req):
+        print('Setting download called: {0}'.format(req))
+        return setting_downloadResponse(status=True)
+
+    def handle_setting_info(self, req):
+        print('Setting info called: {0}'.format(req))
+        return setting_infoResponse()
+
+    def handle_setting_set_volume(self, req):
+        print('Setting set volume called: {0}'.format(req))
+        return setting_setVolumeResponse(status=True)
+
+    def handle_setting_upload(self, req):
+        print('Setting upload called: {0}'.format(req))
+        return setting_uploadResponse(status=True)
+
+
+if __name__ == "__main__":
+    rospy.init_node('qt_tablet_interface')
+
+    qt_id = rospy.get_param('~qt_id', 'qt')
+    robot_id = rospy.get_param('~robot_id', '')
+    zyre_network_interface = rospy.get_param('~zyre_network_interface', 'wlan0')
+
+    zyre_communicator = ZyreCommunicator(qt_id, ['MIGRAVE'], qt_id, zyre_network_interface)
+    zyre_communicator.start()
+    msg_data['payload']['senderId'] = qt_id
+    msg_data['payload']['receiverId'] = robot_id
+    rospy.loginfo('Ready for QT tablet requests')
+    try:
+        while not rospy.is_shutdown():
+            rospy.sleep(0.5)
+    except (KeyboardInterrupt, SystemExit):
+        print('Stopping QT tablet interface')
+        zyre_communicator.shutdown()

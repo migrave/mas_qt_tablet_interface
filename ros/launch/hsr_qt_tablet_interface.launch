@@ -1,0 +1,13 @@
+<launch>
+    <arg name="qt_id" value="qt" />
+    <arg name="robot_id" value="hsr" />
+    <arg name="zyre_network_interface" value="wlp3s0" />
+    <arg name="say_topic" value="/say" />
+
+    <node name="hsr_qt_tablet_interface" pkg="mas_qt_tablet_interface" type="robot_qt_tablet_interface" output="screen">
+        <param name="qt_id" value="$(arg qt_id)" />
+        <param name="robot_id" value="$(arg robot_id)" />
+        <param name="zyre_network_interface" value="$(arg zyre_network_interface)" />
+        <param name="say_topic" value="$(arg say_topic)" />
+    </node>
+</launch>
