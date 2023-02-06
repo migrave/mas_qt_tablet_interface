@@ -1,0 +1,11 @@
+<launch>
+    <arg name="qt_id" value="qt" />
+    <arg name="robot_id" value="nao" />
+    <arg name="zyre_network_interface" value="wlan0" />
+
+    <node name="nao_qt_tablet_interface" pkg="mas_qt_tablet_interface" type="nao_qt_tablet_interface" output="screen">
+        <param name="qt_id" value="$(arg qt_id)" />
+        <param name="robot_id" value="$(arg robot_id)" />
+        <param name="zyre_network_interface" value="$(arg zyre_network_interface)" />
+    </node>
+</launch>
