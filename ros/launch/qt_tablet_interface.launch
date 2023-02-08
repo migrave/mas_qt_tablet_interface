@@ -1,7 +1,7 @@
 <launch>
     <arg name="qt_id" value="qt" />
-    <arg name="robot_id" value="hsr" />
-    <arg name="zyre_network_interface" value="wlp59s0" />
+    <arg name="robot_id" value="nao" />
+    <arg name="zyre_network_interface" value="wlp0s20f3" />
 
     <node name="qt_tablet_interface" pkg="mas_qt_tablet_interface" type="qt_tablet_interface" output="screen">
         <param name="qt_id" value="$(arg qt_id)" />
