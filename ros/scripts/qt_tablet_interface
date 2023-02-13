@@ -118,6 +118,7 @@ class ZyreCommunicator(PyreBase):
         msg_data['payload']['type'] = 'SAY'
         msg_data['payload']['message'] = req.message
         self.shout(msg_data)
+        rospy.sleep(5.0)
         return behavior_talk_textResponse(status=True)
 
     def handle_audio_play(self, req):
