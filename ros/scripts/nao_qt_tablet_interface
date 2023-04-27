@@ -24,6 +24,11 @@ msg_data = {
     }
 }
 
+class Colors(object):
+    cyan = ColorRGBA(r=0., g=1., b=1., a=1.)
+    green = ColorRGBA(r=0., g=1., b=0., a=1.)
+    blue = ColorRGBA(r=0., g=0., b=1., a=1.)
+
 class ZyreCommunicator(PyreBase):
     def __init__(self, node_name, groups, robot_id, zyre_network_interface):
         '''
@@ -61,10 +66,14 @@ class ZyreCommunicator(PyreBase):
                     goal.say = dict_msg['payload']['message']
                     rospy.loginfo("Sending speech message")
                     self.speech_client.send_goal(goal)
-
+                elif dict_msg['payload']['type'] == 'SHOW-EMOTION':
                     blink_goal = BlinkGoal()
-                    sky_blue_color = ColorRGBA(r=0., g=1., b=1., a=1.)
-                    blink_goal.colors = [sky_blue_color]
+                    if dict_msg['payload']['message'] == 'happy':
+                        blink_goal.colors = [Colors.cyan]
+                    elif dict_msg['payload']['message'] == 'kiss':
+                        blink_goal.colors = [Colors.green]
+                    else:
+                        blink_goal.colors = [Colors.blue]
                     blink_goal.blink_duration.secs = 3
                     blink_goal.blink_rate_mean = 0.5
                     blink_goal.blink_rate_sd = 0.1
