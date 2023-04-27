@@ -132,6 +132,11 @@ class ZyreCommunicator(PyreBase):
 
     def handle_audio_play(self, req):
         print('Audio play called: {0}'.format(req))
+        msg_data['header']['timestamp'] = time.time()
+        msg_data['payload']['type'] = 'PLAY-AUDIO'
+        msg_data['payload']['message'] = req.filename
+        self.shout(msg_data)
+        rospy.sleep(5.0)
         return audio_playResponse(status=True)
 
     def handle_audio_stop(self, req):
