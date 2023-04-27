@@ -102,6 +102,15 @@ class ZyreCommunicator(PyreBase):
 
     def handle_emotion_show(self, req):
         print('Emotion show called: {0}'.format(req))
+        msg_data['header']['timestamp'] = time.time()
+        msg_data['payload']['type'] = 'SHOW-EMOTION'
+
+        # the message for QT is of the form QT/[emotion-name], so we remove
+        # the first part to extract the name of the emotion before sending it to NAO
+        msg_data['payload']['message'] = req.name.split('/')[1]
+
+        self.shout(msg_data)
+        rospy.sleep(5.0)
         return emotion_showResponse(status=True)
 
     def handle_emotion_stop(self, req):
