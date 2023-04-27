@@ -5,7 +5,8 @@ from pyre_base.base_class import PyreBase
 import rospy
 import actionlib
 
-from naoqi_bridge_msgs.msg import SpeechWithFeedbackAction, SpeechWithFeedbackGoal
+from std_msgs.msg import ColorRGBA
+from naoqi_bridge_msgs.msg import SpeechWithFeedbackAction, SpeechWithFeedbackGoal, BlinkAction, BlinkGoal
 
 msg_data = {
     "header":
@@ -37,6 +38,7 @@ class ZyreCommunicator(PyreBase):
 
         self.robot_id = robot_id
         self.speech_client = actionlib.SimpleActionClient("/speech_action", SpeechWithFeedbackAction)
+        self.blink_client = actionlib.SimpleActionClient("/blink", BlinkAction)
 
     def receive_msg_cb(self, msg_content):
         '''Processes incoming messages. Only listens to messages of type "CMD";
@@ -59,6 +61,16 @@ class ZyreCommunicator(PyreBase):
                     goal.say = dict_msg['payload']['message']
                     rospy.loginfo("Sending speech message")
                     self.speech_client.send_goal(goal)
+
+                    blink_goal = BlinkGoal()
+                    sky_blue_color = ColorRGBA(r=0., g=1., b=1., a=1.)
+                    blink_goal.colors = [sky_blue_color]
+                    blink_goal.blink_duration.secs = 3
+                    blink_goal.blink_rate_mean = 0.5
+                    blink_goal.blink_rate_sd = 0.1
+                    self.blink_client.send_goal(blink_goal)
+                    rospy.sleep(3.)
+                    self.blink_client.cancel_all_goals()
 
 if __name__ == '__main__':
     rospy.init_node('nao_qt_tablet_interface')
