@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import time
 from pyre_base.base_class import PyreBase
 
@@ -7,6 +8,7 @@ import actionlib
 
 from std_msgs.msg import ColorRGBA
 from naoqi_bridge_msgs.msg import SpeechWithFeedbackAction, SpeechWithFeedbackGoal, BlinkAction, BlinkGoal
+from nao_interaction_msgs.srv import AudioPlayback, AudioPlaybackRequest
 
 msg_data = {
     "header":
@@ -44,6 +46,7 @@ class ZyreCommunicator(PyreBase):
         self.robot_id = robot_id
         self.speech_client = actionlib.SimpleActionClient("/speech_action", SpeechWithFeedbackAction)
         self.blink_client = actionlib.SimpleActionClient("/blink", BlinkAction)
+        self.audio_play_proxy = rospy.ServiceProxy("/nao_audio/play_file", AudioPlayback)
 
     def receive_msg_cb(self, msg_content):
         '''Processes incoming messages. Only listens to messages of type "CMD";
@@ -80,6 +83,14 @@ class ZyreCommunicator(PyreBase):
                     self.blink_client.send_goal(blink_goal)
                     rospy.sleep(3.)
                     self.blink_client.cancel_all_goals()
+                elif dict_msg['payload']['type'] == 'PLAY-AUDIO':
+                   rospy.wait_for_service("/nao_audio/play_file")
+                   audio_playback_request = AudioPlaybackRequest()
+                   audio_playback_request.file_path.data = os.path.join('sounds', dict_msg['payload']['message'])
+                   try:
+                       self.audio_play_proxy(audio_playback_request)
+                   except rospy.ServiceException:
+                       pass
 
 if __name__ == '__main__':
     rospy.init_node('nao_qt_tablet_interface')
